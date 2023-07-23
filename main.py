@@ -3,6 +3,7 @@
 
 import pandas as pd
 import random
+import requests
 
 # store information of the show
 shows = ['a', 'b']
@@ -40,4 +41,11 @@ def ask_for_recommendation():
 
 
 if __name__ == "__main__":
-    ask_for_recommendation()
+    # ask_for_recommendation()
+    # url = "https://api.jikan.moe/v4/genres/anime"
+    url = "https://api.jikan.moe/v4/anime?order_by=9"
+    response = requests.get(url).json()
+    print(response)
+    # df = pd.DataFrame([[d['v'] for d in x['c']] for x in response['rows']],
+    #                   columns=[d['label'] for d in response['cols']])
+    # print(df)
